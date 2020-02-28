@@ -44,7 +44,7 @@ def get_details(url, category):
     
     try:
         raw_text = html.select('#item-title')[0].get_text().strip()
-        stamp['raw_text'] = raw_text
+        stamp['raw_text'] = raw_text.replace("\n"," ").replace('"',"'")
     except:
         stamp['raw_text'] = None 
         
