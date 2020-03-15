@@ -118,9 +118,11 @@ def get_details(url, category):
     # image_urls should be a list
     images = []                    
     try:
-        img_src = html.select('.item-img a')[0].get('href')
-        img = 'https://www.arpinphilately.com' + img_src
-        images.append(img)
+        for img_item in html.select('.item-img a'):
+            img_src = img_item.get('href')
+            img = 'https://www.arpinphilately.com' + img_src
+            if img not in images:
+                images.append(img)
     except:
         pass
     
